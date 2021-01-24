@@ -8,6 +8,7 @@ class App extends Component {
       { title: "Task 2", completed: true },
       { title: "Task 3", completed: false },
     ],
+    inputValue: "",
   };
 
   toggleTodo = (e) => {
@@ -16,21 +17,14 @@ class App extends Component {
     const todo = { ...todos[index] };
     todo.completed = !todo.completed;
     todos[index] = todo;
-    this.setState({
-      todos: todos,
-    });
-
-    console.log("Complete ToDo");
+    this.setState({ todos: todos });
   };
 
   deleteTodo = (e) => {
     const index = e.target.getAttribute("data-index");
     const todos = [...this.state.todos];
     todos.splice(index, 1);
-    this.setState({
-      todos: todos,
-    });
-    console.log("Delete ToDo", index);
+    this.setState({ todos: todos });
   };
 
   renderTodos = () => {
@@ -63,16 +57,33 @@ class App extends Component {
     });
   };
 
+  submitHandler = (e) => {
+    e.preventDefault();
+    const newTodo = {
+      title: this.state.inputValue,
+      complete: false,
+    };
+    this.setState({
+      todos: [...this.state.todos, newTodo],
+      inputValue: "",
+    });
+    console.log("Task add");
+  };
+
   render() {
-    console.log(this.state.todos);
     const renderedTodos = this.renderTodos();
     return (
       <div className="App">
         <div className="todo-list-container">
           <h1 className="title">ToDo List 📃</h1>
           <ul>{renderedTodos}</ul>
-          <form>
-            <input type="text" placeholder="Add task here"></input>
+          <form onSubmit={this.submitHandler}>
+            <input
+              type="text"
+              placeholder="Add task here"
+              value={this.state.inputValue}
+              onChange={(e) => this.setState({ inputValue: e.target.value })}
+            />
             <button>
               <span role="img" aria-label="emoji">
                 ➕
