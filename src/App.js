@@ -1,27 +1,50 @@
 import React, { Component } from "react";
 import "./App.css";
 
-const user = {
-  name: "Tobby",
-  age: 4,
-  image:
-    "https://kb.rspca.org.au/wp-content/uploads/2018/11/golder-retriever-puppy.jpeg",
-  size: 420,
-};
-
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1 className="title">
-          {user.name} tiene {user.age} de edad.
-        </h1>
-        <img
-          className="image"
-          alt="Foto de Tobby"
-          src={user.image}
-          width={user.size}
-        />
+        <div className="todo-list-container">
+          <h1 className="title"> ToDo List 📃</h1>
+          <ul>
+            <li>
+              <span className="task">Task 1</span>
+              <span role="img" aria-label="emoji" className="icon-task">
+                ✅
+              </span>
+              <span role="img" aria-label="emoji" className="icon-task">
+                ⛔
+              </span>
+            </li>
+            <li>
+              <span className="task">Task 2</span>
+              <span role="img" aria-label="emoji" className="icon-task">
+                ✅
+              </span>
+              <span role="img" aria-label="emoji" className="icon-task">
+                ⛔
+              </span>
+            </li>
+            <li>
+              <span className="task">Task 3 </span>
+              <span role="img" aria-label="emoji" className="icon-task">
+                ✅
+              </span>
+              <span role="img" aria-label="emoji" className="icon-task">
+                ⛔
+              </span>
+            </li>
+          </ul>
+          <form>
+            <input type="text" placeholder="Add task here"></input>
+            <button>
+              <span role="img" aria-label="emoji">
+                ➕
+              </span>
+            </button>
+          </form>
+        </div>
       </div>
     );
   }
