@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import "./App.css";
 
 const user = {
@@ -9,20 +9,22 @@ const user = {
   size: 420,
 };
 
-const App = () => {
-  return (
-    <div className="App">
-      <h1 className="title">
-        {user.name} tiene {user.age} de edad.
-      </h1>
-      <img
-        className="image"
-        alt="Foto de Tobby"
-        src={user.image}
-        width={user.size}
-      />
-    </div>
-  );
-};
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <h1 className="title">
+          {user.name} tiene {user.age} de edad.
+        </h1>
+        <img
+          className="image"
+          alt="Foto de Tobby"
+          src={user.image}
+          width={user.size}
+        />
+      </div>
+    );
+  }
+}
 
 export default App;
