@@ -1,6 +1,42 @@
 import React, { Component } from "react";
 import "./App.css";
 
+class TodoList extends Component {
+  render() {
+    const todos = this.props.todos;
+    //console.log(this.props.todos);
+    return todos.map((todo, index) => {
+      return (
+        <li key={todo.title}>
+          <span className={`task ${todo.complete ? "completed" : ""}`}>
+            {todo.title}
+          </span>
+          <span
+            role="img"
+            aria-label="emoji"
+            className="icon-task"
+            onClick={this.toggleTodo}
+            data-index={index}
+            title="Mark as complete."
+          >
+            ✅
+          </span>
+          <span
+            role="img"
+            aria-label="emoji"
+            className="icon-task"
+            onClick={this.deleteTodo}
+            data-index={index}
+            title="Remove task."
+          >
+            ⛔
+          </span>
+        </li>
+      );
+    });
+  }
+}
+
 class App extends Component {
   state = {
     todos: [
@@ -28,33 +64,35 @@ class App extends Component {
   };
 
   renderTodos = () => {
-    return this.state.todos.map((todo, index) => {
-      return (
-        <li key={todo.title}>
-          <span className={`task ${todo.completed ? "completed" : ""}`}>
-            {todo.title}
-          </span>
-          <span
-            role="img"
-            aria-label="emoji"
-            className="icon-task"
-            onClick={this.toggleTodo}
-            data-index={index}
-          >
-            ✅
-          </span>
-          <span
-            role="img"
-            aria-label="emoji"
-            className="icon-task"
-            onClick={this.deleteTodo}
-            data-index={index}
-          >
-            ⛔
-          </span>
-        </li>
-      );
-    });
+    // return this.state.todos.map((todo, index) => {
+    //   return (
+    //     <li key={todo.title}>
+    //       <span className={`task ${todo.complete ? "completed" : ""}`}>
+    //         {todo.title}
+    //       </span>
+    //       <span
+    //         role="img"
+    //         aria-label="emoji"
+    //         className="icon-task"
+    //         onClick={this.toggleTodo}
+    //         data-index={index}
+    //         title="Mark as complete."
+    //       >
+    //         ✅
+    //       </span>
+    //       <span
+    //         role="img"
+    //         aria-label="emoji"
+    //         className="icon-task"
+    //         onClick={this.deleteTodo}
+    //         data-index={index}
+    //         title="Remove task."
+    //       >
+    //         ⛔
+    //       </span>
+    //     </li>
+    //   );
+    // });
   };
 
   submitHandler = (e) => {
@@ -70,12 +108,12 @@ class App extends Component {
   };
 
   render() {
-    const renderedTodos = this.renderTodos();
+    //const renderedTodos = this.renderTodos();
     return (
       <div className="App">
         <div className="todo-list-container">
           <h1 className="title">ToDo List 📃</h1>
-          <ul>{renderedTodos}</ul>
+          <ul>{<TodoList todos={this.state.todos} />}</ul>
           <form onSubmit={this.submitHandler}>
             <input
               type="text"

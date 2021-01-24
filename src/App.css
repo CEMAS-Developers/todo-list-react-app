@@ -20,10 +20,11 @@ body {
   text-align: center;
 }
 
-.completed {
+.complete {
   position: relative;
 }
-.completed::after {
+
+.complete::after {
   border-bottom: 0.125em solid #f2f2f2;
   content: "";
   left: 0;
