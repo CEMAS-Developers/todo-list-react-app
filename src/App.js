@@ -67,7 +67,6 @@ class App extends Component {
       todos: [...this.state.todos, newTodo],
       inputValue: "",
     });
-    console.log("Task add");
   };
 
   render() {
