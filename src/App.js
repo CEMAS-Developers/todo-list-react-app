@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
 
-function App() {
+const user = {
+  name: "Tobby",
+  age: 4,
+  image:
+    "https://kb.rspca.org.au/wp-content/uploads/2018/11/golder-retriever-puppy.jpeg",
+  size: 420,
+};
+
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1 className="title">
+        {user.name} tiene {user.age} de edad.
+      </h1>
+      <img
+        className="image"
+        alt="Foto de Tobby"
+        src={user.image}
+        width={user.size}
+      />
     </div>
   );
-}
+};
 
 export default App;
