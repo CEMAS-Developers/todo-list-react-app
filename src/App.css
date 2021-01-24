@@ -20,6 +20,20 @@ body {
   text-align: center;
 }
 
+.completed {
+  position: relative;
+}
+.completed::after {
+  border-bottom: 0.125em solid #f2f2f2;
+  content: "";
+  left: 0;
+  margin-top: calc(0.125em / 2 * -1);
+  position: absolute;
+  right: 0;
+  top: 50%;
+}
+
+
 ul {
   padding: 0;
   list-style: none;

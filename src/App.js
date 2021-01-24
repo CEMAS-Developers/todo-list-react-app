@@ -10,8 +10,16 @@ class App extends Component {
     ],
   };
 
-  handleClick = () => {
-    this.setState({ todoTitle: "Task 0" });
+  toggleTodo = (e) => {
+    const index = e.target.getAttribute("data-index");
+    const todos = [...this.state.todos];
+    const todo = { ...todos[index] };
+    todo.completed = !todo.completed;
+    todos[index] = todo;
+    this.setState({
+      todos: todos,
+    });
+
     console.log("Complete ToDo");
   };
 
@@ -29,12 +37,15 @@ class App extends Component {
     return this.state.todos.map((todo, index) => {
       return (
         <li key={todo.title}>
-          <span className="task">{todo.title}</span>
+          <span className={`task ${todo.completed ? "completed" : ""}`}>
+            {todo.title}
+          </span>
           <span
             role="img"
             aria-label="emoji"
             className="icon-task"
-            onClick={this.handleClick}
+            onClick={this.toggleTodo}
+            data-index={index}
           >
             ✅
           </span>
@@ -50,46 +61,10 @@ class App extends Component {
         </li>
       );
     });
-
-    // return (
-    //   <div>
-    // <li>
-    //   <span className="task">Task 1</span>
-    //   <span
-    //     role="img"
-    //     aria-label="emoji"
-    //     className="icon-task"
-    //     onClick={this.handleClick}
-    //   >
-    //     ✅
-    //   </span>
-    //   <span role="img" aria-label="emoji" className="icon-task">
-    //     ⛔
-    //   </span>
-    // </li>
-    //     <li>
-    //       <span className="task">Task 2</span>
-    //       <span role="img" aria-label="emoji" className="icon-task">
-    //         ✅
-    //       </span>
-    //       <span role="img" aria-label="emoji" className="icon-task">
-    //         ⛔
-    //       </span>
-    //     </li>
-    //     <li>
-    //       <span className="task">Task 3 </span>
-    //       <span role="img" aria-label="emoji" className="icon-task">
-    //         ✅
-    //       </span>
-    //       <span role="img" aria-label="emoji" className="icon-task">
-    //         ⛔
-    //       </span>
-    //     </li>
-    //   </div>
-    //);
   };
 
   render() {
+    console.log(this.state.todos);
     const renderedTodos = this.renderTodos();
     return (
       <div className="App">
