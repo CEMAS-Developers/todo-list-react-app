@@ -2,7 +2,7 @@ body {
   background-color: #262523;
 }
 
-.app {
+.App {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,9 +10,9 @@ body {
 }
 
 .todo-list-container {
-  background-color: #3772A6;
+  background-color: #3772a6;
   width: 50%;
-  color:#F2F2F2;
+  color: #f2f2f2;
   border-radius: 5px;
 }
 .title {
@@ -39,17 +39,17 @@ form {
   justify-content: center;
 }
 
-input{
+input {
   border: none;
   border-radius: 5px;
   background-color: #262523;
   padding: 15px 10px;
   width: 75%;
   margin-right: 10px;
-  color: #F2F2F2;
+  color: #f2f2f2;
 }
 
-button{
+button {
   background-color: #262523;
   border: none;
   border-radius: 5px;
